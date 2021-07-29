@@ -10,7 +10,9 @@ module.exports = {
         return patients;
     },
     async requestById(id) {
-        const patient = await Patients.findByPk(id);
+        const patient = await Patients.findByPk(id, {
+            include: { association: 'schedules' }
+        });
         if (!patient) {
             return false;
         }
@@ -27,18 +29,18 @@ module.exports = {
             return false;
         }
         const patient = await Patients.create({
-          name: data.name,
-          phone: data.phone,
-          email: data.email,
-          birthday: data.birthday,
-          gender: data.gender,
-          height: data.height,
-          weight: data.weight
+            name: data.name,
+            phone: data.phone,
+            email: data.email,
+            birthday: data.birthday,
+            gender: data.gender,
+            height: data.height,
+            weight: data.weight
         })
         return patient;
     },
     async update(data, id) {
-        
+
         const patientExists = await Patients.findByPk(id);
 
         if (patientExists == null) {
@@ -54,12 +56,12 @@ module.exports = {
             weight: data.weight
         },
             {
-                where: {id: id}
+                where: { id: id }
             }
         )
         return patient;
     },
-    async delete (id) {
+    async delete(id) {
         const patientExists = await Patients.findByPk(id);
         if (patientExists == null) {
             return false;

@@ -1,5 +1,13 @@
 const Doctors = require('../models/Doctors');
 module.exports = {
+    async request (data) {
+        const doctor = await Doctors.findAll({
+            where: {
+                'login' : data.login
+            }
+        })
+        return doctor
+    },
     async execute(data) {
 
         const doctorsExists = await Doctors.findAll({

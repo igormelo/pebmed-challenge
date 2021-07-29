@@ -14,7 +14,7 @@ module.exports = {
             password: "required|string",
         };
         password = crypto.createHash("sha256").update(password).digest("hex");
-        var data = { name, lastname, login, password }
+        const data = { name, lastname, login, password }
 
         validator(req.body, rules, {}, async (err, status) => {
             if (!status) {

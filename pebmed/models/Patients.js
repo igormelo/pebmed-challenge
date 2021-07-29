@@ -15,8 +15,8 @@ class Patients extends Model {
         })
     }
     static associate(models) {
-        this.hasMany(models.Notes, { foreignKey: 'paciente_id', as: 'notes' });
-        this.hasMany(models.Schedules, { foreignKey: 'paciente_id', as: 'schedules' })
+        this.hasMany(models.Notes, { foreignKey: 'patient_id', as: 'notes' });
+        this.hasMany(models.Schedules, { foreignKey: 'patient_id', as: 'schedules' })
       }
 }
 module.exports = Patients;

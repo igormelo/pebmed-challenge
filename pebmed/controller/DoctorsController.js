@@ -2,9 +2,10 @@ const { create, update } = require('../models/Doctors');
 const crypto = require("crypto");
 const validator = require("../middlewares/validate");
 const doctorsRepository = require('../repositories/DoctorRepository');
-const DoctorRepository = require('../repositories/DoctorRepository');
+
 module.exports = {
     async create(req, res) {
+        let data = req.body;
         var { name, lastname, login, password } = req.body;
         let rules = {
             name: "required|string",
@@ -23,12 +24,7 @@ module.exports = {
                 })
             } else {
                 try {
-                    let response = await doctorsRepository.execute({
-                        name,
-                        lastname,
-                        login,
-                        password
-                    });
+                    let response = await doctorsRepository.execute(data);
 
                     if (!response) {
                         res.status(500).send({ message: "Doctors Already exists" })

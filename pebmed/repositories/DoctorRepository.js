@@ -19,9 +19,8 @@ module.exports = {
         })
         return doctor;
     },
-    async update(data) {
-        const id = req.params.id;
-
+    async update(data, id) {
+        
         const doctorsIdExists = await Doctors.findByPk(id);
 
         if (!doctorsIdExists) {

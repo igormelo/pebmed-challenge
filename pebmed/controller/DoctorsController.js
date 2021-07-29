@@ -5,7 +5,7 @@ const doctorsRepository = require('../repositories/DoctorRepository');
 
 module.exports = {
     async create(req, res) {
-        let data = req.body;
+
         var { name, lastname, login, password } = req.body;
         let rules = {
             name: "required|string",
@@ -14,6 +14,7 @@ module.exports = {
             password: "required|string",
         };
         password = crypto.createHash("sha256").update(password).digest("hex");
+        var data = { name, lastname, login, password }
 
         validator(req.body, rules, {}, async (err, status) => {
             if (!status) {
@@ -27,11 +28,15 @@ module.exports = {
                     let response = await doctorsRepository.execute(data);
 
                     if (!response) {
-                        res.status(500).send({ message: "Doctors Already exists" })
+                        res.status(500).send({
+                            message: "Doctors Already exists"
+                        })
                     }
-                    res.json(response)
+                    res.status(200).json(response)
                 } catch (e) {
-                    res.status(500).send({ message: 'Error check the logs' });
+                    res.status(500).send({ 
+                        message: 'Error check the logs' 
+                    });
                 }
             }
         })
@@ -46,10 +51,10 @@ module.exports = {
                 password
             })
             console.log(response);
-            if(!response) {
+            if (!response) {
 
             }
-            return res.json({message: 'Refreshed'})
+            return res.json({ message: 'Refreshed' })
         } catch (e) {
 
         }

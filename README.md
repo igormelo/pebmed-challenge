@@ -21,6 +21,7 @@
 5. Rode `npm run migrations` para executar as migrations;
 6. Rode `npm run seeds` para criar um usuario admin padrão execute a seed;
 7. Rode `npm run dev` para iniciar o servidor.
+8. Collection do POSTMAN: https://www.postman.com/collections/4e94d8c6f72c6722e850
 
 
 ## Passo a Passo

@@ -28,10 +28,12 @@
  - Primeiro utilize a rota de login `localhost:3000/login` com o USUARIO: admin@pebmed.com.br  SENHA: pebmedpass para receber um token de autenticação
  - Utilize o token para cadastrar pacientes, medicos, anotações e agendamentos
  - Primeiro para cadastrar um <b>médico</b> acesse a rota `localhost:3000/doctors/create` passando o parâmetros para o cadastro
-    <p><i>name</i></p>
-    <p><i>lastname</i></p>
-    <p><i>login (um email)</i></p>
-    <p><i>password</i></p>
+ {
+      name: 'John',
+      lastname: 'Cena',
+      login: 'john@pebmed.com.br',
+      password: '123456'
+ }
     ℹ️ Utilizando sempre o token retornado pelo login
 
  - Agora `localhost:3000/patient/signup` para criar um <b>paciente</b> passando os parametros (<b>header</b>: Autorization: `TOKEN`)

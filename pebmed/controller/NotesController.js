@@ -1,10 +1,10 @@
 const { create } = require('../models/Notes');
-const notesRepository = require('../repositories/NotesRepository');
+const NotesRepository = require('../repositories/NotesRepository');
 module.exports = {
     async request(req, res) {
         const { patient_id } = req.params;
         try {
-            const patient = await notesRepository.request(patient_id);
+            const patient = await NotesRepository.request(patient_id);
 
             if (!patient) {
                 res.status(500).send({ message: 'Patient not found' })
@@ -22,12 +22,12 @@ module.exports = {
         const { consultation_date, message } = req.body
         const data = { consultation_date, message }
         try {
-            const patient = await notesRepository.request(patient_id);
+            const patient = await NotesRepository.request(patient_id);
 
             if (!patient) {
                 res.status(500).json({error: 'Patient not found'})
             }
-            const notes = await notesRepository.create(data, patient_id);
+            const notes = await NotesRepository.create(data, patient_id);
             res.json(notes);
         } catch (e) {
             res.status(500).send({message: 'Error: check the logs'})

@@ -5,7 +5,7 @@ const verifyJWT = async (req, res, next) => {
     const token = req.headers['authorization']
     jwt.verify(token, SECRET, (err, decoded) => {
 
-        if(err) return res.status(401).end();
+        if(err) return res.status(401).send({message: 'Required JWT Token'}).end();
 
         req.userId = decoded.userId;
         next();

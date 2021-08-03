@@ -30,10 +30,10 @@
  - Primeiro para cadastrar um <b>médico</b> acesse a rota `localhost:3000/doctors/create` passando o parâmetros para o cadastro
  ```javascript
  {
-      name: 'John',
-      lastname: 'Cena',
-      login: 'john@pebmed.com.br',
-      password: '123456'
+      "name": "John",
+      "lastname": "Cena",
+      "login": "john@pebmed.com.br",
+      "password": "123456"
  }
  ```
     ℹ️ Utilizando sempre o token retornado pelo login

@@ -18,7 +18,7 @@ module.exports = {
 
         validator(req.body, rules, {}, async (err, status) => {
             if (!status) {
-                req.status(412).send({
+                res.status(412).send({
                     success: false,
                     message: "Validation failed",
                     data: err
